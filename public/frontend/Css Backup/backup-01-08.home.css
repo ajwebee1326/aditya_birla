@@ -1,0 +1,795 @@
+:root {
+    --primary-dark-gold: #CAA236;
+    --secondry-light-gold: #E7C873;
+    --third-gold-color: #F6D167;
+    --dark: #1A1A1A;
+    --secondary-dark: #23262D;
+    --light: #FFFFFF;
+    --input-bg: #f1f1f1;
+    --background: linear-gradient(to right,
+            rgba(26, 26, 26, 0.8) 0%,
+            rgba(26, 26, 26, 0.1) 60%,
+            rgba(0, 0, 0, 0) 100%);
+    --btn-radius: 30px;
+    --contact-btn-radius: 68px;
+    --h5-desktop: 32px;
+    --h5-mob: 20px;
+    --h1-desktop: 58px;
+    --h2-desktop: 50px;
+    --h1-mob: 34px;
+    --h2-mob: 23px;
+    --h6-desktop: 36px;
+    --h6-mob: 20px;
+    --regular-font: 27px;
+    --regular-font-mob: 16px;
+    --padding-block-desktop: 90px;
+    --padding-block-mob: 40px;
+
+    --bottom-spacing: 30px;
+    --fw-500: 500;
+    --primary-font-family: "Montserrat", sans-serif;
+    --secondary-font-family: "Roboto", sans-serif;
+    --line-height: 1.5em;
+    --btn-padding: 13px 37px;
+}
+
+body {
+    font-family: var(--primary-font-family);
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+}
+
+.gy-6 {
+    --bs-gutter-y: 5rem;
+}
+
+.bg-primary {
+    background: var(--background) !important;
+}
+
+
+.header-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-block: 28px;
+    z-index: 9;
+    background: transparent;
+    transition: all 0.5s ease;
+}
+
+.whatsappno img {
+    max-width: 22px;
+
+}
+.whatsappno span {
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    font-family: var(--secondary-font-family);
+    transition: all 0.3s ease-in;
+    position: relative;
+}
+
+.whatsappno span:before {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: var(--secondry-light-gold);
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    transform: translateX(100%);
+    transition: all 0.5s ease;
+}
+
+.whatsappno span:hover:before {
+    transform: translateX(0);
+}
+
+.header-top.scrolled {
+    background: var(--dark);
+    padding: 15px;
+}
+
+.header-top.hidden {
+    transform: translateY(-100%);
+}
+
+.hero-content {
+    background-image: url("./Images/bg-img.webp");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--light) !important;
+    z-index: 1;
+
+}
+
+.hero-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background);
+    z-index: -1;
+}
+
+/* Swiper*/
+#testimonial {
+    background-image: url("./Images/20161204_BED_WARM.RGB_color\ 1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--light) !important;
+    z-index: 1;
+    padding: 50px 0;
+}
+
+#testimonial::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 26, 26, 0.9);
+    z-index: -1;
+}
+
+.testimonial {
+    max-width: 500px;
+    margin: auto;
+}
+
+.mySwiper {
+    position: relative;
+}
+
+.user_property {
+    width: 250px;
+    max-width: 100%;
+}
+
+.spacing {
+    padding-block: var(--padding-block-desktop) !important;
+}
+
+.header-right a {
+    text-decoration: none;
+    color: var(--light);
+    overflow: hidden;
+}
+
+.primary-btn {
+    background-color: var(--secondry-light-gold);
+    font-weight: var(--fw-500);
+    color: var(--dark);
+    line-height: var(--line-height);
+    border-radius: var(--btn-radius);
+    padding: var(--btn-padding);
+    display: inline-block;
+    font-size: 18px;
+    transition: all 0.4s ease;
+}
+
+.primary-btn:hover {
+    background-color: var(--primary-dark-gold);
+    color: var(--light);
+}
+
+.header-right .downloadbtn {
+    border-radius: var(--contact-btn-radius);
+    display: inline-block;
+    color: var(--light);
+    border: 1px solid var(--light);
+    padding: 9px 40px;
+    transition: all 0.3s ease-in;
+}
+
+.header-right .downloadbtn:hover {
+    background-color: var(--secondry-light-gold);
+    color: var(--dark);
+    font-weight: var(--fw-500);
+    border-color: transparent;
+}
+
+.hero-content h1 {
+    font-size: var(--h1-desktop);
+    font-weight: bold;
+}
+
+.hero-content h1 span {
+    color: var(--secondry-light-gold);
+}
+
+.hero-content h5 {
+    font-size: var(--h5-desktop);
+    font-weight: var(--fw-500);
+    line-height: 1.4em;
+}
+
+#hero-section p {
+    font-size: 27px;
+    line-height: 2.5rem;
+}
+
+.hero-content h1,
+.hero-content h5,
+.hero-content p {
+    margin-bottom: var(--bottom-spacing);
+}
+
+#hero-section .Downloadbtn:hover {
+    background-color: #e1b02a;
+    color: white;
+
+}
+
+#strategy,
+#Apartments,
+#Steps {
+    padding-block: var(--padding-block-desktop);
+    position: relative;
+
+
+}
+
+#strategy .title,
+#Apartments .title,
+#testimonial .title {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.left-side {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    max-width: 450px;
+}
+
+.right-side {
+    position: absolute;
+    right: 0;
+    top: 0;
+    max-width: 450px;
+}
+
+@media (max-width: 1600px) {
+    .right-side, .left-side {
+        max-width: 300px;
+    }
+}
+
+#Steps .title h2 span {
+    color: var(--dark);
+}
+
+#strategy .title h2,
+#Apartments .title h2,
+#Steps .title h2,
+#testimonial .title h2 {
+    font-size: var(--h2-desktop);
+    line-height: 60px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#Steps {
+    background-color: var(--secondry-light-gold);
+    color: var(--light);
+}
+
+#Steps .title h2 {
+    max-width: 1140px;
+}
+
+#strategy .title h2 span {
+    color: var(--primary-dark-gold);
+}
+
+#Apartments .title h2 span {
+    color: var(--secondry-light-gold);
+}
+
+#testimonial .title h2 span {
+    color: var(--secondry-light-gold);
+}
+
+.box {
+    max-width: 450px;
+    margin: auto;
+    color: var(--dark);
+    opacity: .8;
+    font-size: 17px;
+    margin-bottom: 0;
+}
+
+.box .box-title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+}
+
+.box img {
+    max-width: 80px;
+}
+
+.LearnMore,
+.formdownbtn,
+.explore {
+    display: block;
+    background-color: var(--primary-color);
+    color: var(--dark);
+    text-decoration: none;
+    line-height: 56px;
+    font-size: 18px;
+    border-radius: var(--btn-radius);
+    color: var(--dark);
+    padding-inline: 30px;
+    text-align: center;
+    transition: all 0.3s ease-in;
+
+}
+
+.LearnMore:hover,
+.formdownbtn:hover,
+.explore:hover {
+    background-color: #e1b02a;
+    color: white;
+
+}
+
+.explore,
+.formdownbtn {
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+
+#Apartments {
+    background-color: var(--secondary-dark);
+    color: var(--light);
+
+}
+
+#Apartments p h6 {
+    margin-bottom: 0;
+}
+
+#Luxury-Apartments,
+#Townhouses {
+    position: relative;
+}
+
+#Luxury-Apartments1 {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.right-side-arrow {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    max-width: 200px;
+}
+
+.arrow {
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: var(--btn-radius);
+}
+
+.left-side-arrow {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    max-width: 200px;
+}
+
+@media (max-width: 1600px) {
+    .right-side-arrow {
+        right: -55px;
+        max-width: 125px;
+    }
+    .left-side-arrow {
+        left: -55px;
+        max-width: 125px;
+    }
+}
+
+.highlight {
+    font-size: 22px;
+}
+
+.apartmentDetails h6 {
+    font-size: var(--h6-desktop);
+    color: var(--third-gold-color);
+    font-weight: 500;
+}
+
+.specification p {
+    font-size: var(--regular-font-mob);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.specification p span {
+    color: var(--third-gold-color);
+}
+
+.discription {
+    font-size: 16px;
+    color: #9e9e9e;
+    max-width: 540px;
+}
+
+.specification {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.apartments-img-box h6 {
+    max-width: 330px;
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--light) !important;
+}
+
+.apartments-img-box {
+    position: relative;
+}
+.apartments-img-box-right{
+    position: relative;
+}
+
+
+.apartments-img-box::before {
+    content: "";
+    width: 1500px;
+    background-color: #D9D9D9;
+    position: absolute;
+    bottom: 0;
+    opacity: 0.03;
+}
+
+.apartments-img-box.apartments-img-box-left::before {
+    right: 5px;
+    height: calc(100% - 62px);
+}
+
+.apartments-img-box-right {
+    position: relative;  
+}
+
+.apartments-img-box-right::before {
+    content: "";
+    width: 1500px;
+    background-color: #D9D9D9;
+    position: absolute;
+    left: 5px;
+    bottom: 0;
+    height: calc(100% - 60px);
+    opacity: 0.03;
+}
+
+.apartmentDetails::before {
+    right: 5px;
+    height: calc(100% - 58px);
+}
+
+@media (max-width: 1400px) {
+    .apartments-img-box.apartments-img-box-left::before, .apartments-img-box-right::before {
+        height: calc(100% - 54px);
+    }
+}
+
+
+.step {
+    color: var(--dark) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.step-text {
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 5px;
+    font-size: 20px;
+}
+
+.step-text::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: var(--dark);
+    left: 0;
+    bottom: 0;
+}
+
+.step-discription {
+    max-width: 200px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.step img {
+    max-width: 70px;
+}
+
+.brochure-box {
+    max-width: 465px;
+}
+
+.startbtn {
+    text-decoration: none;
+    color: var(--dark);
+    border: 1px solid var(--light);
+    background-color: var(--light);
+    border-radius: var(--radius);
+    text-align: center;
+    padding: 15px 30px;
+    margin-top: 10px;
+    transition: all 0.3s ease-in;
+    border-radius: var(--btn-radius);
+    font-weight: 500;
+
+}
+
+.startbtn:hover {
+    background-color: var(--dark);
+    color: var(--light);
+    border: none;
+    outline: none;
+}
+
+.brochure-content h5 {
+    font-size: var(--regular-font);
+    font-weight: bold;
+    line-height: 2.5rem;
+}
+
+.brochure-content h5 span {
+    color: var(--primary-dark-gold);
+}
+
+.form-control:focus,
+.form-select:focus {
+    box-shadow: none !important;
+}
+
+.form-label {
+    color: #000;
+    font-weight: 500;
+}
+
+.form-control,
+.form-select,
+.form-control:focus,
+.form-select:focus {
+    padding-block: 13px !important;
+    background-color: var(--input-bg);
+    border-radius: 30px;
+    min-height: 45px;
+    padding: 0 20px;
+    border: none;
+}
+
+.brochure-box p {
+    margin-bottom: 30px;
+}
+
+.turn {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.privacy-note {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--white);
+}
+
+footer a img {
+    max-width: 24px;
+    height: 24px;
+    object-fit: cover;
+}
+
+footer {
+    background-color: var(--secondary-dark);
+    padding-block: 40px;
+    color: var(--light);
+}
+
+footer .footer-col-1 p {
+    margin-bottom: 0;
+
+
+}
+
+.footer-col-2 p {
+    line-height: 40px;
+}
+
+.footer-col-3 a {
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.footer-line {
+    border: 0;
+    height: 1px;
+    background: #e1e1e1;
+    width: 100%;
+    margin: 20px auto;
+}
+
+
+
+/* Responsive */
+@media only screen and (max-width:1024px) {
+    .logo {
+        max-width: 200px;
+    }
+
+    .whatsappno img {
+        max-width: 28px;
+    }
+
+    #strategy,
+    #Apartments,
+    #Steps {
+        padding-block: var(--padding-block-mob);
+    }
+
+    .spacing {
+        padding-block: var(--padding-block-mob) !important;
+    }
+
+    #hero-section h1 {
+        font-size: var(--h1-mob);
+    }
+
+    #hero-section h5 {
+        font-size: var(--h5-mob);
+    }
+
+    #hero-section p {
+        font-size: var(--regular-font-mob);
+        line-height: var(--line-height-mob);
+    }
+
+    .hero-content {
+        height: 600px;
+    }
+
+    #strategy .title h2,
+    #Apartments .title h2,
+    #Steps .title h2,
+    #testimonial .title h2 {
+        font-size: var(--h2-mob);
+        line-height: var(--line-height);
+
+    }
+
+    #Luxury-Apartments h6,
+    #Townhouses h6 {
+        font-size: var(--h6-mob);
+
+    }
+
+    .apartments-img-box h6 {
+        left: 0;
+        bottom: 20px;
+        right: 0;
+        margin: auto;
+        text-align: center;
+    }
+
+
+}
+
+@media (min-width:1024px) {
+
+    .brochure-content {
+        padding-inline: 30px;
+    }
+    .title p{
+        font-size: 20px;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width:991px) {
+    .discription {
+        margin: auto;
+    }
+    .apartments-img-box.apartments-img-box-left::before, .apartments-img-box-right::before {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .box img {
+        margin: auto;
+    }
+    .title p {
+        font-size: 18px;
+    }
+
+    .hero-content {
+        background-position: 55%;
+    }
+    .primary-btn{
+        font-size: 14px;
+        padding: 10px 30px;
+    }
+    .box .box-title{
+        font-size: 23px;
+        line-height: 30px;
+    }
+    .highlight {
+        font-size: 18px;
+    }
+    .step-text{
+        font-size: 17px;
+    } 
+    .brochure-content h5 {
+        font-size:18px;
+        line-height: 2rem;
+    }
+    .gy-6 {
+        --bs-gutter-y: 4rem;
+    }
+
+    .specification p {
+        font-size: 14px;
+    }
+
+}
+
+@media (max-width: 575px) {
+    .startbtn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    p {
+        font-size: 14px;
+    }
+    .box .box-title {
+        font-size: 20px;
+    }
+    .w-mob-280 {
+        max-width: 280px;
+    }
+}
