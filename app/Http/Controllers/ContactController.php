@@ -34,6 +34,7 @@ class ContactController extends Controller
     public function store(Request $request)
     {
 
+      
         $rules = [
             'name' => 'required',
             'email' => 'required|email|unique:contacts',
@@ -59,14 +60,24 @@ class ContactController extends Controller
         $contact->email = $request->email;
         $contact->phone = $request->phone;
         $contact->specialty = $request->select;
-        $contact->message = $request->comment;
-               
-        if($contact->save()) {
-            
+        $contact->message = $request->message;
+       
+        try{
+            $contact->save();
+
+            if ($request->hasFile('file')) {
+                $file = $request->file('file');
+                $path = $file->store('prescriptions');
+                $contact->path = $path; 
+                $contact->save(); // 
+            }
+
             return redirect()->route('viewIndex');
+
+        }catch(\Exception $e){
+            return redirect()->back();
         }
-        return redirect()->route('viewIndex')->with('error', 'An error occurred. Please try again later.');
-     
+
     }
 
     public function checkEmail(Request $request){

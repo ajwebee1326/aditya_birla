@@ -20,8 +20,6 @@ return new class extends Migration
             $table->mediumText('file_name');
             $table->mediumText('path');
             $table->longText('message');
-            $table->string('utm_source')->nullable();
-            $table->mediumText('utm_content')->nullable();
             $table->timestamps();
         });
     }

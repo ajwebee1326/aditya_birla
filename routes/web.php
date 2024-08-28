@@ -26,6 +26,7 @@ Route::get('/',[WebSiteController::class,'index'])->name('viewIndex');
 Route::post('/contact',[ContactController::class,'store'])->name('contactUs');
 Route::post('/check-email',[ContactController::class,'checkEmail'])->name('check-email');
 Route::post('/check-phone',[ContactController::class,'checkPhone'])->name('check-phone');
+Route::post('/thank-you',[ContactController::class,'checkPhone'])->name('check-phone');
 
 
 

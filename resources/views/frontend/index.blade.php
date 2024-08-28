@@ -115,7 +115,7 @@
                                                 <div class="col-6">
                                                     <div class="form_icons">
                                                         <input class="xs-mb-10px mb-15px form-control required" type="text"
-                                                            name="name" placeholder="Name*" />
+                                                            name="name" placeholder="Name*" required/>
                                                         <i class="fa-regular fa-user"></i>
                                                     </div>
                                                     @error('name')
@@ -126,7 +126,7 @@
                                                 <div class="col-6">
                                                     <div class="form_icons">
                                                         <input class="xs-mb-10px mb-15px form-control required" type="number"
-                                                            name="phone" placeholder="Number*" />
+                                                            name="phone" placeholder="Number*" required/>
                                                         <i class="fa-solid fa-phone"></i>
                                                     </div>
                                                     @error('phone')
@@ -136,7 +136,7 @@
                                                 <div class="col-sm-6">
                                                     <div class="form_icons">
                                                         <input class="xs-mb-10px mb-15px form-control required" type="email"
-                                                            name="email" placeholder="Email*" />
+                                                            name="email" placeholder="Email*" required />
                                                         <i class="fa-regular fa-envelope"></i>
                                                     </div>
                                                     @error('email')
