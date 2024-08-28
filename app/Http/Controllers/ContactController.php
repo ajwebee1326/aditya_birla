@@ -36,7 +36,7 @@ class ContactController extends Controller
         $specialty = $request->specialty;
         if($specialty == 'other'){
             $rules = [
-                'name' => 'required|alpha',
+                'name' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
                 'email' => 'required|email|unique:contacts',
                 'phone' => 'required|digits_between:10,13|unique:contacts',
                 'specialty' => 'required',
@@ -44,7 +44,7 @@ class ContactController extends Controller
             ];
         }else{
             $rules = [
-                'name' => 'required|alpha',
+                'name' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
                 'email' => 'required|email|unique:contacts',
                 'phone' => 'required|digits_between:10,13|unique:contacts',
                 'specialty' => 'required',
@@ -53,7 +53,7 @@ class ContactController extends Controller
 
         $messages = [
             'name.required' => 'Please enter your name.',
-            'name.alpha' => 'Name must contain only alphabets.',
+            'name.regex' => 'Name must contain only alphabets and spaces.',
             'email.required' => 'Please enter your email address.',
             'email.email' => 'The email address must be a valid email format.',
             'phone.required' => 'Please enter your phone number.',
@@ -77,10 +77,7 @@ class ContactController extends Controller
         try{
             
             if ($request->hasFile('file')) {
-                //  $file = $request->file->store('files');
-                $file = $request->file('file')->store('files', 'public');
-
-                
+                $file = $request->file('file')->store('files');                
                 $contact->file = $file;
             }
 
