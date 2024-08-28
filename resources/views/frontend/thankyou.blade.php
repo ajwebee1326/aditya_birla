@@ -33,7 +33,6 @@
             <div class="container">
                 <a class="navbar-brand" href="{{route('viewIndex')}}">
                     <img src="{{ asset('frontend') }}/images/Logo.webp" alt="" class="default-logo img-fluid">
-
                 </a>
 
                

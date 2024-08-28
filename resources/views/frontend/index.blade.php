@@ -180,7 +180,7 @@
                                                     <div class="mb-15px select form_icons ">
                                                         <select class="form-control" name="specialty"
                                                             aria-label="select-doctor" required>
-                                                            <option value="">Specialty</option>
+                                                            <option value="">Specialist</option>
                                                             @if($show_old_specialty)
                                                              <option selected value="{{old('specialty') }}">
                                                                 {{old('specialty') }}
@@ -372,7 +372,7 @@
                                     </div>
                                     <div class="content-box text-center">
                                         <span class="d-block text-dark-gray fs-20 fw-700 mb-5px">Cardiology</span>
-                                        <p>Providing advanced care for heart defects, congenital disease, coronary issues, and more, with expert treatments like TAVI, angioplasty, and pediatric cardiac surgery.</p>
+                                        <p>Providing Advanced Care For Heart Defects, Congenital Disease, Coronary Issues, And More, With Expert Treatments Like Tavi, Angioplasty, And Pediatric Cardiac Surgery.</p>
 
                                     </div>
 
@@ -387,7 +387,7 @@
                                     </div>
                                     <div class="content-box text-center">
                                         <span class="d-block text-dark-gray fs-20 fw-700 mb-5px">Neuroscience</span>
-                                        <p>Advanced neurology care offering expert diagnosis, treatment for stroke, epilepsy, Parkinson's, and more. Specialized Neuro ICU for critical cases.</p>
+                                        <p>Advanced Neurology Care Offering Expert Diagnosis, Treatment For Stroke, Epilepsy, Parkinson's, And More. Specialized Neuro Icu For Critical Cases.</p>
 
                                     </div>
 
@@ -404,9 +404,7 @@
                                     <div class="content-box text-center">
                                         <span class="d-block text-dark-gray fs-20 fw-700 mb-5px">Orthopedics & Joint
                                             Replacement</span>
-                                        <p>We provide comprehensive orthopedic care for
-                                            knee, hip, and joint issues, with specialties in sports medicine, pediatric
-                                            orthopedics, arthritis, and pain management. </p>
+                                        <p>We Provide Comprehensive Orthopedic Care For Knee, Hip, And Joint Issues, With Specialties In Sports Medicine, Pediatric Orthopedics, Arthritis, And Pain Management.</p>
 
                                     </div>
 
@@ -421,9 +419,7 @@
                                     </div>
                                     <div class="content-box text-center">
                                         <span class="d-block text-dark-gray fs-20 fw-700 mb-5px">Mother & Child</span>
-                                        <p>Comprehensive care for mother and child:
-                                            NICU, PICU, advanced birthing center, and pediatric services, ensuring the
-                                            best care at every step.</p>
+                                        <p>Comprehensive Care For Mother And Child: Nicu, Picu, Advanced Birthing Center, And Pediatric Services, Ensuring The Best Care At Every Step.</p>
 
                                     </div>
 
@@ -441,9 +437,7 @@
                                     <div class="content-box text-center">
                                         <span class="d-block text-dark-gray fs-20 fw-700 mb-5px">Cancer
                                             Care/Oncology</span>
-                                        <p>We deliver holistic, integrated cancer care
-                                            through our expert team specializing in Surgical, Radiation, and Medical
-                                            Oncology, utilizing advanced technology and world-class facilities. </p>
+                                        <p>We Deliver Holistic, Integrated Cancer Care Through Our Expert Team Specializing In Surgical, Radiation, And Medical Oncology, Utilizing Advanced Technology And World-Class Facilities.</p>
 
                                     </div>
 
@@ -458,8 +452,7 @@
                                     </div>
                                     <div class="content-box text-center">
                                         <span class="d-block text-dark-gray fs-20 fw-700 mb-5px">Nephrology</span>
-                                        <p>Expert nephrology care with advanced
-                                            diagnostics and personalized plans for optimal kidney function.</p>
+                                        <p>Expert Nephrology Care With Advanced Diagnostics And Personalized Plans For Optimal Kidney Function.</p>
 
                                     </div>
 
@@ -474,9 +467,7 @@
                                     </div>
                                     <div class="content-box text-center">
                                         <span class="d-block text-dark-gray fs-20 fw-700 mb-5px">Urology</span>
-                                        <p>We provide comprehensive treatment for
-                                            urological conditions, specializing in urology, uro-oncology, robotic
-                                            surgery, kidney transplants, and more.</p>
+                                        <p>We Provide Comprehensive Treatment For Urological Conditions, Specializing In Urology, Uro-Oncology, Robotic Surgery, Kidney Transplants, And More.</p>
 
                                     </div>
 
@@ -492,9 +483,7 @@
                                     </div>
                                     <div class="content-box text-center">
                                         <span class="d-block text-dark-gray fs-20 fw-700 mb-5px">Gastroenterology</span>
-                                        <p>Our state-of-the-art facility offers expert
-                                            gastro care with advanced diagnostics for digestive and hepatobiliary
-                                            diseases in children and adults. </p>
+                                        <p>Our State-Of-The-Art Facility Offers Expert Gastro Care With Advanced Diagnostics For Digestive And Hepatobiliary Diseases In Children And Adults. </p>
 
 
                                     </div>
@@ -514,9 +503,7 @@
                                     </div>
                                     <div class="content-box text-center">
                                         <span class="d-block text-dark-gray fs-20 fw-700 mb-5px">Robotic Surgery</span>
-                                        <p>Introducing Robotic Surgery with the da
-                                            Vinci Robot—an advanced system for minimally invasive procedures with
-                                            precision in Urology, Gynaecology, Oncology, and Gastroenterology. </p>
+                                        <p>Introducing Robotic Surgery With The Da Vinci Robot—An Advanced System For Minimally Invasive Procedures With Precision In Urology, Gynaecology, Oncology, And Gastroenterology. </p>
 
                                     </div>
 
@@ -531,9 +518,7 @@
                                     </div>
                                     <div class="content-box text-center">
                                         <span class="d-block text-dark-gray fs-20 fw-700 mb-5px">Critical Care</span>
-                                        <p>Our Critical Care Unit is a specialized
-                                            facility offering exceptional care and continuous monitoring for critically
-                                            ill patients, surpassing standard hospital room capabilities.</p>
+                                        <p>Our Critical Care Unit Is A Specialized Facility Offering Exceptional Care And Continuous Monitoring For Critically Ill Patients, Surpassing Standard Hospital Room Capabilities.</p>
 
                                     </div>
 
@@ -1696,6 +1681,29 @@
 
                                 <p class="video_title d-block text-dark-gray fs-20 fw-700 mb-5px mt-2">
                                     Brain Stroke Case
+                                </p>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="youtubeSection position-relative">
+                                    <!-- Button trigger modal -->
+                                    <div type="button" data-bs-toggle="modal" data-bs-target="#test_video6">
+                                        <a style="position: relative; display: block;">
+                                            <img width="100%" height="200" 
+                                                 src="https://img.youtube.com/vi/g58Q2MIrRNI/maxresdefault.jpg" 
+                                                 alt="YouTube Video Thumbnail" 
+                                                 title="Click to watch the video" 
+                                                 style="object-fit: cover;" />
+                                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                                <svg height="60px" width="60px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" xml:space="preserve">
+                                                    <circle style="fill:#FF0000;" cx="50" cy="50" r="50"></circle>
+                                                    <polygon style="fill:#FFFFFF;" points="40,30 70,50 40,70"></polygon>
+                                                </svg>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <p class="video_title d-block text-dark-gray fs-20 fw-700 mb-5px mt-2"> Mother & Child Department
                                 </p>
                             </div>
                         </div>
