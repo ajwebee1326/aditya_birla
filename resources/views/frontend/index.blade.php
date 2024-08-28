@@ -114,42 +114,83 @@
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form_icons">
-                                                        <input class="xs-mb-10px mb-15px form-control required" type="text"
-                                                            name="name" placeholder="Name*" required/>
+                                                        <input class="xs-mb-10px mb-15px form-control required @error('name') is-invalid @enderror" type="text"
+                                                            name="name" placeholder="Name*" required value="{{ old('name') }}" />
                                                         <i class="fa-regular fa-user"></i>
                                                     </div>
                                                     @error('name')
-                                                    <span class="text-danger">{{ $message }}</span>
+                                                    <small class="text-danger">{{ $message }}</small>
                                                     @enderror
 
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form_icons">
-                                                        <input class="xs-mb-10px mb-15px form-control required" type="number"
-                                                            name="phone" placeholder="Number*" required/>
+                                                        <input class="xs-mb-10px mb-15px form-control required @error('phone') is-invalid @enderror" type="number"
+                                                            name="phone" placeholder="Number*" required value="{{ old('phone') }}" />
                                                         <i class="fa-solid fa-phone"></i>
                                                     </div>
                                                     @error('phone')
-                                                    <span class="text-danger">{{ $message }}</span>
+                                                    <small class="text-danger">{{ $message }}</small>
                                                     @enderror
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form_icons">
-                                                        <input class="xs-mb-10px mb-15px form-control required" type="email"
-                                                            name="email" placeholder="Email*" required />
+                                                        <input class="xs-mb-10px mb-15px form-control required @error('email') is-invalid @enderror" type="email"
+                                                            name="email" placeholder="Email*" required value="{{ old('email') }}" />
                                                         <i class="fa-regular fa-envelope"></i>
                                                     </div>
                                                     @error('email')
-                                                    <span class="text-danger">{{ $message }}</span>
+                                                    <small class="text-danger">{{ $message }}</small>
                                                     @enderror
 
                                                 </div>
 
+                                                @php
+                                                    $specialty = old('specialty');
+                                                    $show_old_specialty = false;    
+                                                @endphp
+
+                                                @error('email')
+                                                    @php
+                                                        $show_old_specialty = true;
+                                                    @endphp
+                                                @enderror
+
+                                                @error('name')
+                                                    @php
+                                                        $show_old_specialty = true;
+                                                    @endphp
+                                                @enderror
+
+                                                @error('phone')
+                                                    @php
+                                                        $show_old_specialty = true;
+                                                    @endphp
+                                                @enderror
+
+                                                @error('specialty')
+                                                    @php
+                                                        $show_old_specialty = true;
+                                                    @endphp
+                                                @enderror
+
+                                                @error('message')
+                                                    @php
+                                                        $show_old_specialty = true;
+                                                    @endphp
+                                                @enderror
+
+
                                                 <div class="col-sm-6">
                                                     <div class="mb-15px select form_icons ">
-                                                        <select class="form-control" name="select"
-                                                            aria-label="select-doctor">
+                                                        <select class="form-control" name="specialty"
+                                                            aria-label="select-doctor" required>
                                                             <option value="">Specialty</option>
+                                                            @if($show_old_specialty)
+                                                             <option selected value="{{old('specialty') }}">
+                                                                {{old('specialty') }}
+                                                             </option>
+                                                            @endif
                                                             <option value="Cardiologist">Cardiologist</option>
                                                             <option value="Neurologist">Neurologist</option>
                                                             <option value="Orthopedic">Orthopedic</option>
@@ -174,12 +215,18 @@
                                                             </option>
                                                         </select>
                                                         <i class="fa-solid fa-circle-check"></i>
+                                                        @error('specialty')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                        @enderror
                                                     </div>
                                                 </div>
 
                                                 <div class="form_icons">
                                                     <textarea class="form-control mb-15px" cols="20" rows="2"
-                                                        name="message" placeholder="Your message"></textarea>
+                                                        name="message" placeholder="Your message">{{ old('message') }}</textarea>4
+                                                    @error('message')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form_icons">
@@ -195,7 +242,7 @@
 
                                                 </div>
                                                 <div class="col-12 text-center mt-25px sm-mt-20px">
-                                                    <button class="btn btn-medium w-100 btn-base-color btn-round-edge left-icon btn-box-shadow submit p-2" type="submit"><i class="feather icon-feather-phone"></i>Request a Call Back</button>
+                                                    <button class="btn btn-medium w-100 btn-base-color btn-round-edge left-icon btn-box-shadow p-2" type="submit"><i class="feather icon-feather-phone"></i>Request a Call Back</button>
                                                 </div>
                                             </div>
 

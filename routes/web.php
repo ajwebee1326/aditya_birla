@@ -27,9 +27,10 @@ Route::post('/contact',[ContactController::class,'store'])->name('contactUs');
 Route::post('/check-email',[ContactController::class,'checkEmail'])->name('check-email');
 Route::post('/check-phone',[ContactController::class,'checkPhone'])->name('check-phone');
 Route::post('/thank-you',[ContactController::class,'checkPhone'])->name('check-phone');
+Route::post('change-lead-type',[ContactController::class,'changeLeadType'])->name('contacts.change-type');
 
 
-
+ 
 
 Route::get('/admin/login', [AuthController::class, 'index'])->name('admin.login');
 Route::post('/admin/login', [AuthController::class, 'authenticate'])->name('admin.authenticate');

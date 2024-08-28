@@ -34,21 +34,34 @@ class ContactController extends Controller
     public function store(Request $request)
     {
 
-      
-        $rules = [
-            'name' => 'required',
-            'email' => 'required|email|unique:contacts',
-            'phone' => 'required|digits_between:7,12|unique:contacts',
-        ];
+        $specialty = $request->specialty;
+        if($specialty == 'other'){
+            $rules = [
+                'name' => 'required|alpha',
+                'email' => 'required|email|unique:contacts',
+                'phone' => 'required|digits_between:10,13|unique:contacts',
+                'specialty' => 'required',
+                'message' => 'required',
+            ];
+        }else{
+            $rules = [
+                'name' => 'required|alpha',
+                'email' => 'required|email|unique:contacts',
+                'phone' => 'required|digits_between:10,13|unique:contacts',
+                'specialty' => 'required',
+            ];
+        }
 
         $messages = [
             'name.required' => 'Please enter your name.',
+            'name.alpha' => 'Name must contain only alphabets.',
             'email.required' => 'Please enter your email address.',
             'email.email' => 'The email address must be a valid email format.',
             'phone.required' => 'Please enter your phone number.',
             'phone.digits_between' => 'Phone number must be between 7 and 12 digits.',
-            'email.unique' => 'The email address is already registered.',
-            'phone.unique' => 'The phone number is already registered.',
+            'email.unique' => 'Email is already registered.',
+            'phone.unique' => 'Number is already registered.',
+            'message.required' => 'Please enter your message.',
         ];
 
         // Validate the request
@@ -59,18 +72,17 @@ class ContactController extends Controller
         $contact->name = $request->name;
         $contact->email = $request->email;
         $contact->phone = $request->phone;
-        $contact->specialty = $request->select;
+        $contact->specialty = $request->specialty;
         $contact->message = $request->message;
        
         try{
-            $contact->save();
-
+            
             if ($request->hasFile('file')) {
-                $file = $request->file('file');
-                $path = $file->store('prescriptions');
-                $contact->path = $path; 
-                $contact->save(); // 
+                $file = $request->file->store('files');
+                $contact->file = $file;
             }
+
+            $contact->save();
 
             return redirect()->route('viewIndex');
 
@@ -137,6 +149,14 @@ class ContactController extends Controller
 
     public function export(){
         return Excel::download(new ContactsExport, 'contacts.xlsx');
+    }
+
+    public function changeLeadType(Request $request){
+        $contact = Contact::find($request->id);
+        $contact->lead_type = $request->type;
+        $contact->save();
+        return response()->json(['status' => 'success', 'message' => 'Lead type updated successfully.']);   
+        
     }
 
 }

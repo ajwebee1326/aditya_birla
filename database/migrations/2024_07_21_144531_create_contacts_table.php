@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->string('specialty');
-            $table->mediumText('file_name');
-            $table->mediumText('path');
-            $table->longText('message');
+            $table->string('specialty')->nullable();
+            $table->text('file')->nullable();
+            $table->longText('message')->nullable();
+            $table->string('lead_type')->nullable();
             $table->timestamps();
         });
     }
