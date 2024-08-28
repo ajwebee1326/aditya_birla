@@ -9,8 +9,8 @@
     content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
   <title>@yield('title')</title>
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="https://cdn.prod.website-files.com/6065cc6d72ae8a1ba7a8cd95/6066cd0273adcb57fd1b6e4b_favicon.png">
-
+  {{-- <link rel="icon" type="image/x-icon" href="https://cdn.prod.website-files.com/6065cc6d72ae8a1ba7a8cd95/6066cd0273adcb57fd1b6e4b_favicon.png"> --}}
+  <link rel="shortcut icon" href="http://localhost:8000/frontend/images/Logo--rotate.png">
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>

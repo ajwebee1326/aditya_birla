@@ -16,11 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->string('city');
+            $table->string('specialty');
+            $table->mediumText('file_name');
+            $table->mediumText('path');
+            $table->longText('message');
             $table->string('utm_source')->nullable();
-            $table->string('utm_medium')->nullable();
-            $table->string('utm_campaign')->nullable();
-            $table->mediumText('utm_link')->nullable();
             $table->mediumText('utm_content')->nullable();
             $table->timestamps();
         });

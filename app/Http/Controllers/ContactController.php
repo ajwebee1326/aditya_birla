@@ -33,11 +33,11 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+
         $rules = [
             'name' => 'required',
             'email' => 'required|email|unique:contacts',
             'phone' => 'required|digits_between:7,12|unique:contacts',
-            'city' => 'required',
         ];
 
         $messages = [
@@ -58,20 +58,12 @@ class ContactController extends Controller
         $contact->name = $request->name;
         $contact->email = $request->email;
         $contact->phone = $request->phone;
-        $contact->city = $request->city;
-        $contact->utm_source = $request->utm_source;
-        $contact->utm_medium = $request->utm_medium;
-        $contact->utm_campaign = $request->utm_campaign;
-        $contact->utm_link = $request->utm_link;
-        $contact->utm_content = $request->utm_content;
-        
+        $contact->specialty = $request->select;
+        $contact->message = $request->comment;
+               
         if($contact->save()) {
-            // download sameple.pdf file
-            $file = public_path()."/frontend/global_brochure.pdf";
-            $headers = array(
-                'Content-Type: application/pdf',
-            );
-            return response()->download($file, 'global_brochure.pdf', $headers);
+            
+            return redirect()->route('viewIndex');
         }
         return redirect()->route('viewIndex')->with('error', 'An error occurred. Please try again later.');
      

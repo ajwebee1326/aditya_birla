@@ -26,11 +26,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
-                        <th>City</th>
-                        <th>Utm Source</th>
-                        <th>Utm Medium</th>
-                        <th>Utm Campaign</th>
-                        <th>Utm Content</th>
+                        <th>Specialty</th>
                         <th>Contact Date</th>
                         <th>Actions</th>
                     </tr>
@@ -42,11 +38,7 @@
                             <td>{{ $contact->name }}</td>
                             <td>{{ $contact->email }}</td>
                             <td>{{ $contact->phone }}</td>
-                            <td>{{ $contact->city }}</td>
-                            <td>{{ $contact->utm_source }}</td>
-                            <td>{{ $contact->utm_medium }}</td>
-                            <td>{{ $contact->utm_campaign }}</td>
-                            <td>{{ $contact->utm_content }}</td>
+                            <td>{{ $contact->specialty }}</td>
                             <td>{{ $contact->created_at }}</td>
                             <td>
                                 <a href="{{ route('contacts.delete', $contact->id) }}" class="btn btn-danger btn-sm"><i class="bx bx-trash"></i></a>
