@@ -46,6 +46,7 @@
                                     $types = ['Relevant', 'Irrelevant', 'Pending', 'Spam','Done'];
                                 @endphp
                                 <select class="form-control-sm change_lead_type" data-type='{{$contact->lead_type}}' data-id="{{ $contact->id }}">
+                                    <option value="">Select Lead Type</option>
                                     @foreach($types as $type)
                                         <option value="{{ $type }}" {{ $contact->lead_type == $type ? 'selected' : '' }}>{{ $type }}</option>
                                     @endforeach
@@ -105,6 +106,10 @@
         $(document).on('change', '.change_lead_type', function() {
             var type = $(this).val();
             var id = $(this).data('id');
+            if(type == '' || type == 'Sellect Lead Type' || type == null) {
+                return;
+            }
+
             $.ajax({
                 url: "{{ route('contacts.change-type') }}",
                 type: 'POST',
