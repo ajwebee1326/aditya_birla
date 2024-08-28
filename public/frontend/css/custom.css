@@ -685,8 +685,48 @@ section {
     .fa-arrow-left .fa-arrow-next{
         font-size: 14px;
     }
+}
 
+.thankyouSection{
+    background-image: url("../images/ABMH\ VIEW.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 700px;
+    background-position: center;
+}
+.content-Box{
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+@media (max-width:576px) {
+    .thankyouheader .w-40px, .thankyouheader .h-40px{
+        height: 30px !important;
+        width: 30px !important;
+    }
+    .thankyouheader .nav-item a{
+      font-size: 14px;
+    }
+    .thankyouSection{
+        height: 320px !important;
+        background-size: contain !important;
+    }
+    .content-Box{
+        margin-top: -70px;
+}
+}
+
+@media (min-width:768px) and (max-width:1240px) {
+  
+    .thankyouSection{
+        height: 450px !important;
+        background-size: cover !important;
+    }
 
 }
+
 
 
