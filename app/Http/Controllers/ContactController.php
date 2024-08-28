@@ -92,6 +92,11 @@ class ContactController extends Controller
 
     }
 
+    public function thankyou()
+    {
+        return view('frontend.thankyou'); 
+    }
+
     public function checkEmail(Request $request){
         $email = $request->email;
         $contact = Contact::where('email', $email)->first();
