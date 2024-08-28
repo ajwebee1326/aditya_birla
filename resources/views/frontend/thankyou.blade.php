@@ -1,9 +1,8 @@
 <!doctype html>
 <html class="no-js" lang="en">
 
-
 <head>
-    <title>Thank you Page</title>
+    <title>Thank You | Best Multispeciality Hospital in Pune | Expert Maternity, Neurology</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
@@ -23,8 +22,8 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/responsive.css" />
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/custom.css" />
     <!-- Google fonts -->
-    {{-- <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet"> --}}
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body data-mobile-nav-style="classic">
@@ -32,19 +31,18 @@
         <!-- start header -->
         <nav class="navbar navbar-expand-lg fixed-top bg-white py-1 py-xxl-3 border-bottom thankyouheader">
             <div class="container">
-                <a class="navbar-brand" href="#">
-                    <img src="{{ asset('frontend') }}/images/Logo.webp" data-at2x="{{ asset('frontend') }}/images/Logo.webp" alt="" class="default-logo img-fluid">
+                <a class="navbar-brand" href="{{route('viewIndex')}}">
+                    <img src="{{ asset('frontend') }}/images/Logo.webp" alt="" class="default-logo img-fluid">
 
                 </a>
 
                
-                <div c id="">
+                <div id="">
                     <ul class="navbar-nav ms-auto ">
                       <li class="nav-item">
                             <a class="fs-14 text-dark fw-500 d-flex justify-content-lg-center justify-content-start align-items-center gap-2"
                                 href="tel:8630925837">
-                                <span
-                                    class=" bg-secondary w-40px h-40px rounded-circle text-center text-white fs-14 justify-content-center d-flex align-items-center">
+                                <span class=" bg-secondary w-40px h-40px rounded-circle text-center text-white fs-14 justify-content-center d-flex align-items-center">
                                     <i class="feather icon-feather-phone"></i>
                                 </span>
                                 +91 98811 23006
@@ -55,31 +53,14 @@
             </div>
         </nav>
         <!-- end header -->
-        <!-- Header Main -->
-     
-            <section class="thankyouSection p-0" id="thankYou ">
-                <div class="container">
-                   
-                   </div>
-            </section>
-        <section class="content-Box  ">
-            <div class="container">
-                  <h2 class="text-center heading">Thanks for reaching out.</h2>
-                  <h4 class="text-center">Our team will contact you soon.</h4>
 
+        <section class="thankyou-main content-Box">
+            <div class="container text-center">
+                <h2 class="heading mb-2">Thanks for reaching out.</h2>
+                <h5>Our team will contact you soon.</h5>
+                <a href="{{route('viewIndex')}}" class="d-inline-block cta-btn">Go Back</a>
             </div>
-
         </section>
-    
-    <!-- Header end  -->
-
-    <!-- NEw About us Section -->
-
-   
-   
-
-   
-
 
     <footer class="p-0">
         <div class="footer-top bg-main-color pt-20px pb-20px lg-no-border-radius position-relative overflow-hidden">

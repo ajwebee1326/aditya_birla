@@ -20,14 +20,10 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/icon.min.css" />
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/style.css" />
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/responsive.css" />
-    {{-- <link rel="stylesheet" href="{{ asset('frontend') }}/demos/medical/medical.css" /> --}}
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/custom.css" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    
     <!-- Google fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    {{-- <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet"> --}}
 </head>
 
 <body data-mobile-nav-style="classic">
@@ -37,6 +33,7 @@
             <div class="container">
                 <a class="navbar-brand" href="#">
                     <img src="{{ asset('frontend') }}/images/Logo.webp" data-at2x="{{ asset('frontend') }}/images/Logo.webp" alt="" class="default-logo img-fluid">
+
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -47,7 +44,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="{{route('viewIndex')}}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#aboutus">About us</a>
@@ -56,7 +53,7 @@
                             <a class="nav-link" href="#clinicalServices">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#Doctorsteam">Team</a>
+                            <a class="nav-link" href="#Doctors-team">Team</a>
                         </li>
 
                         <li class="nav-item">
@@ -112,46 +109,88 @@
                                     </div>
                                     <div class="formbg shadow bg-white p-5">
                                         <!-- start contact form -->
-                                        {{-- <form action="email-templates/contact-form.php" method="post" action="{{ route('contactUs') }}"> --}}
-                                            <form id="contact-form" method="post" action="{{ route('contactUs') }}">
+                                        <form id="contact-form" method="POST" action="{{ route('contactUs') }}" enctype="multipart/form-data">
                                             @csrf
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form_icons">
-                                                        <input class="xs-mb-10px mb-15px form-control required" type="text"
-                                                            name="name" placeholder="Name*" />
+                                                        <input class="xs-mb-10px mb-15px form-control required @error('name') is-invalid @enderror" type="text"
+                                                            name="name" placeholder="Name*" required value="{{ old('name') }}" />
                                                         <i class="fa-regular fa-user"></i>
                                                     </div>
                                                     @error('name')
-                                                    <span class="text-danger">{{ $message }}</span>
+                                                    <small class="text-danger">{{ $message }}</small>
                                                     @enderror
+
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form_icons">
-                                                        <input class="xs-mb-10px mb-15px form-control required" type="text"
-                                                            name="phone" placeholder="Number*" />
+                                                        <input class="xs-mb-10px mb-15px form-control required @error('phone') is-invalid @enderror" type="number"
+                                                            name="phone" placeholder="Number*" required value="{{ old('phone') }}" />
                                                         <i class="fa-solid fa-phone"></i>
                                                     </div>
                                                     @error('phone')
-                                                    <span class="text-danger">{{ $message }}</span>
+                                                    <small class="text-danger">{{ $message }}</small>
                                                     @enderror
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form_icons">
-                                                        <input class="xs-mb-10px mb-15px form-control required" type="text"
-                                                            name="email" placeholder="Email*" />
+                                                        <input class="xs-mb-10px mb-15px form-control required @error('email') is-invalid @enderror" type="email"
+                                                            name="email" placeholder="Email*" required value="{{ old('email') }}" />
                                                         <i class="fa-regular fa-envelope"></i>
                                                     </div>
                                                     @error('email')
-                                                    <span class="text-danger">{{ $message }}</span>
+                                                    <small class="text-danger">{{ $message }}</small>
                                                     @enderror
+
                                                 </div>
+
+                                                @php
+                                                    $specialty = old('specialty');
+                                                    $show_old_specialty = false;    
+                                                @endphp
+
+                                                @error('email')
+                                                    @php
+                                                        $show_old_specialty = true;
+                                                    @endphp
+                                                @enderror
+
+                                                @error('name')
+                                                    @php
+                                                        $show_old_specialty = true;
+                                                    @endphp
+                                                @enderror
+
+                                                @error('phone')
+                                                    @php
+                                                        $show_old_specialty = true;
+                                                    @endphp
+                                                @enderror
+
+                                                @error('specialty')
+                                                    @php
+                                                        $show_old_specialty = true;
+                                                    @endphp
+                                                @enderror
+
+                                                @error('message')
+                                                    @php
+                                                        $show_old_specialty = true;
+                                                    @endphp
+                                                @enderror
+
 
                                                 <div class="col-sm-6">
                                                     <div class="mb-15px select form_icons ">
-                                                        <select class="form-control" name="select"
-                                                            aria-label="select-doctor">
+                                                        <select class="form-control" name="specialty"
+                                                            aria-label="select-doctor" required>
                                                             <option value="">Specialty</option>
+                                                            @if($show_old_specialty)
+                                                             <option selected value="{{old('specialty') }}">
+                                                                {{old('specialty') }}
+                                                             </option>
+                                                            @endif
                                                             <option value="Cardiologist">Cardiologist</option>
                                                             <option value="Neurologist">Neurologist</option>
                                                             <option value="Orthopedic">Orthopedic</option>
@@ -176,18 +215,18 @@
                                                             </option>
                                                         </select>
                                                         <i class="fa-solid fa-circle-check"></i>
+                                                        @error('specialty')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                        @enderror
                                                     </div>
-                                                    @error('select')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
                                                 </div>
 
                                                 <div class="form_icons">
                                                     <textarea class="form-control mb-15px" cols="20" rows="2"
-                                                        name="comment" placeholder="Your message"></textarea>
-                                                        @error('comment')
-                                                        <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
+                                                        name="message" placeholder="Your message">{{ old('message') }}</textarea>4
+                                                    @error('message')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form_icons">
@@ -202,19 +241,13 @@
                                                     </div>
 
                                                 </div>
-                                                {{-- <div class="col-12 text-center mt-25px sm-mt-20px">
-                                                    <input type="hidden" name="redirect" value="">
-                                                    <button
-                                                        class="btn btn-medium w-100 btn-base-color btn-round-edge left-icon btn-box-shadow submit p-2" type="submit"><i class="feather icon-feather-phone"></i>Request a Call Back</button>
-                                                </div> --}}
-
-                                                <div class="text-start my-lg-4 my-3 ">
-                                                    <button type="submit" class="btn btn-medium w-100 btn-base-color btn-round-edge left-icon btn-box-shadow submit p-2" >Request a Call Back</button>
+                                                <div class="col-12 text-center mt-25px sm-mt-20px">
+                                                    <button class="btn btn-medium w-100 btn-base-color btn-round-edge left-icon btn-box-shadow p-2" type="submit"><i class="feather icon-feather-phone"></i>Request a Call Back</button>
                                                 </div>
                                             </div>
 
-                                    </div>
-                                    </form>
+                                            </div>
+                                        </form>
                                     <!-- end contact form -->
                                 </div>
                             </div>
@@ -531,7 +564,7 @@
     <!-- Specialist treatments end section -->
     <!-- Anoter Sliders for text -->
     <!-- slide end -->
-    <section id="Doctorsteam" class=" pt-30px pb-0 position-relative border-radius-10px lg-no-border-radius doctors">
+    <section id="Doctors-team" class=" pt-30px pb-0 position-relative border-radius-10px lg-no-border-radius doctors">
         <div class="container">
             <div class="row align-items-center mb-3">
                 <div class="col-8"
@@ -596,7 +629,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/Rajesh Badani_ Sr.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/Rajesh Badani_ Sr.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -627,7 +660,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/Rakesh_Ranjan.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/Rakesh_Ranjan.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -658,7 +691,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/sawali.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/sawali.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -688,7 +721,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/Ravikumar _Narayan.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/Ravikumar _Narayan.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -748,7 +781,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/Nikhil_Parwate.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/Nikhil_Parwate.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -780,7 +813,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/Amit_Patil.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/Amit_Patil.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -811,7 +844,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/molsari.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/molsari.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -842,7 +875,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/Kiran_Kharat.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/Kiran_Kharat.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -909,7 +942,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/Rahul_Kallaynpur.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/Rahul_Kallaynpur.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -940,7 +973,7 @@
                                             class="d-flex flex-column  text-center border-radius-6px bg-base-color  position-relative">
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
-                                                        class="rounded-circle doctorImg" src="{{asset('frontend')}}/images/priya.webp"
+                                                        class="rounded-circle doctorImg" src="{{ asset('frontend') }}/images/priya.webp"
                                                         alt="">
 
                                                 </a>
@@ -972,7 +1005,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/Sandeep_ Bhavsar.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/Sandeep_ Bhavsar.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -1005,7 +1038,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/Rahul_Baste.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/Rahul_Baste.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -1036,7 +1069,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/Avinash.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/Avinash.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -1069,7 +1102,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/Abhijeet.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/Abhijeet.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -1102,7 +1135,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/Manish_Mali.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/Manish_Mali.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -1133,7 +1166,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/Anand_Vijay.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/Anand_Vijay.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -1196,7 +1229,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/Kakaraniya.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/Kakaraniya.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -1227,7 +1260,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/Radheshay.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/Radheshay.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -1258,7 +1291,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/Vaishali_Bafna.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/Vaishali_Bafna.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -1289,7 +1322,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/Varsha.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/Varsha.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -1321,7 +1354,7 @@
                                             <div class="position-relative pt-4">
                                                 <a href="#" class="d-inline-block position-relative"><img
                                                         class="rounded-circle doctorImg"
-                                                        src="{{asset('frontend')}}/images/Harshawardhan.webp" alt="">
+                                                        src="{{ asset('frontend') }}/images/Harshawardhan.webp" alt="">
 
                                                 </a>
                                             </div>
@@ -1425,7 +1458,7 @@
                                 <div class="testimonial p-3 d-flex flex-column">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="d-flex gap-2 align-items-center">
-                                            <img src="{{asset('frontend')}}/images/man.png" class="user_test" alt="user"/>                                            <p class="mb-0 fw-700 alt-font text-dark-gray d-inline-block">Mangesh
+                                            <img src="{{ asset('frontend') }}/images/man.png" class="user_test" alt="user"/>                                            <p class="mb-0 fw-700 alt-font text-dark-gray d-inline-block">Mangesh
                                                 Dhore</p>
                                         </div>
                                         <div class="d-inline-block starIcons ">
@@ -1461,7 +1494,7 @@
                                 <div class="testimonial p-3 d-flex flex-column">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="d-flex gap-2 align-items-center">
-                                            <img src="{{asset('frontend')}}/images/man.png" class="user_test" alt="user"/>                                            <p class="mb-0 fw-700 alt-font text-dark-gray d-inline-block">Vivek Shah
+                                            <img src="{{ asset('frontend') }}/images/man.png" class="user_test" alt="user"/>                                            <p class="mb-0 fw-700 alt-font text-dark-gray d-inline-block">Vivek Shah
                                             </p>
                                         </div>
                                         <div class="d-inline-block starIcons ">
@@ -1495,7 +1528,7 @@
                                 <div class="testimonial p-3 d-flex flex-column">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="d-flex gap-2 align-items-center">
-                                            <img src="{{asset('frontend')}}/images/female-student.png" class="user_test" alt="user-female"/>
+                                            <img src="{{ asset('frontend') }}/images/female-student.png" class="user_test" alt="user-female"/>
                                             <p class="mb-0 fw-700 alt-font text-dark-gray d-inline-block">Tejaswini Verma</p>
                                         </div>
                                         <div class="d-inline-block starIcons ">
@@ -1864,7 +1897,7 @@
                     <div
                         class="feature-box px-2 py-4 border-radius-10px bg-white box-shadow-double-large position-relative ">
                         <div class="feature-box-icon feature-box-icon-rounded keyIcon emergencyservices ">
-                            <img src="{{asset('frontend')}}/images/Expert Medical Team.png" alt="">
+                            <img src="{{ asset('frontend') }}/images/Expert Medical Team.png" alt="">
                         </div>
                         <div class="feature-box-content">
                             <span class="d-block text-dark-gray fs-18 font_custom font_custom fw-700 mb-5px mt-3">Expert Medical Team</span>
@@ -1897,7 +1930,7 @@
                     <div
                         class="feature-box px-2 py-4 border-radius-10px position-relative  bg-white box-shadow-double-large">
                         <div class="feature-box-icon feature-box-icon-rounded emergencyservices keyIcon ">
-                            <img src="{{asset('frontend')}}/images/Emergency hotline.png" alt="">
+                            <img src="{{ asset('frontend') }}/images/Emergency hotline.png" alt="">
                         </div>
                         <div class="feature-box-content">
                             <span class="d-block text-dark-gray fs-18 font_custom fw-700 mb-5px mt-3">Dedicated Emergency
@@ -2097,26 +2130,10 @@
         </a>
     </div>
     <!-- end scroll progress -->
-
-
-    <div class="toast-container position-fixed top-0 end-0 p-3">
-        <div id="toast-msg" class="toast bg-primary text-white" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header bg-warning text-dark">
-                <strong class="me-auto">Notification</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-               Request Submitted Successfully.
-            </div>
-        </div>
-    </div>
-
-
-    @push('script')
     <!-- javascript libraries -->
-    <script type="text/javascript" src="{{ asset('frontend') }}/js/jquery.js"></script>
-    <script type="text/javascript" src="{{ asset('frontend') }}/js/vendors.min.js"></script>
-    <script type="text/javascript" src="{{ asset('frontend') }}/js/main.js"></script>
+    <script type="text/javascript" src="{{asset('frontend')}}/js/jquery.js"></script>
+    <script type="text/javascript" src="{{asset('frontend')}}/js/vendors.min.js"></script>
+    <script type="text/javascript" src="{{asset('frontend')}}/js/main.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -2217,17 +2234,6 @@
         });
   </script>
 <script>
-
-
-    document.getElementById("contact-form").addEventListener("submit", function() {
-        alert("hello aj");
-            setTimeout(function() {
-                document.getElementById("contact-form").reset(); 
-                $('#toast-msg').toast('show');
-            }, 500);    
-    });
-
-
     document.querySelectorAll('.youtubeSection .overlay').forEach(overlay => {
         overlay.addEventListener('click', function(event) {
             event.preventDefault();
@@ -2255,7 +2261,21 @@
 });
 </script>
 
-@endpush
+{{-- <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          const offset = 100;  
+          const targetPosition = target.offsetTop - offset;
+          
+          window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+          });
+      });
+  });
+  </script> --}}
 </body>
 
 

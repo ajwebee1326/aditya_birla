@@ -15,8 +15,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $this->alert('Welcome to the contact page', 'This is the contact page', 'info');
-        $contacts = Contact::all();
+        $contacts = Contact::orderBy('created_at', 'desc')->get();
         return view('admin.contact.index', compact('contacts')); 
     }
 
@@ -58,7 +57,7 @@ class ContactController extends Controller
             'email.required' => 'Please enter your email address.',
             'email.email' => 'The email address must be a valid email format.',
             'phone.required' => 'Please enter your phone number.',
-            'phone.digits_between' => 'Phone number must be between 7 and 12 digits.',
+            'phone.digits_between' => 'Phone number must be between 10 and 13 digits.',
             'email.unique' => 'Email is already registered.',
             'phone.unique' => 'Number is already registered.',
             'message.required' => 'Please enter your message.',
@@ -78,13 +77,16 @@ class ContactController extends Controller
         try{
             
             if ($request->hasFile('file')) {
-                $file = $request->file->store('files');
+                //  $file = $request->file->store('files');
+                $file = $request->file('file')->store('files', 'public');
+
+                
                 $contact->file = $file;
             }
 
             $contact->save();
 
-            return redirect()->route('viewIndex');
+            return redirect()->route('thank-you');
 
         }catch(\Exception $e){
             return redirect()->back();

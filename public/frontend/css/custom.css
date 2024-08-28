@@ -1,3 +1,5 @@
+
+
 body {
     font-family: "Jost", sans-serif;
     color: #000;
@@ -185,6 +187,12 @@ textarea,
     color: #000;
     margin-bottom: 20px;
     font-weight: 700;
+}
+
+@media (max-width: 1400px) {
+    .heading {
+        font-size: 32px !important;
+    }
 }
 
 .get_in_btn a {
@@ -384,7 +392,7 @@ textarea,
     .chooseuscontent svg {
         width: 8%;
     }
-
+   
    
 
     .testimonial img {
@@ -455,6 +463,7 @@ textarea,
 .navbar-brand img {
     max-width: 250px;
 }
+
 
 .navbar ul li a {
     color: #000 !important;
@@ -638,6 +647,10 @@ section {
         font-size:18px !important;
         line-height: 30px !important;
     }
+    /* .thankyouheader .navbar-brand img{
+        max-width: 120px;
+    } */
+   
 }
 .btn-box{
     display: flex;
@@ -685,8 +698,9 @@ section {
     .fa-arrow-left .fa-arrow-next{
         font-size: 14px;
     }
-}
 
+
+}
 .thankyouSection{
     background-image: url("../images/ABMH\ VIEW.webp");
     background-repeat: no-repeat;
@@ -695,8 +709,12 @@ section {
     height: 700px;
     background-position: center;
 }
+.thankyou-main {
+    min-height: 60vh;
+    margin-top: 70x;
+    padding-top: 90px;
+}
 .content-Box{
-   
     display: flex;
     justify-content: center;
     align-items: center;
@@ -714,11 +732,14 @@ section {
         height: 320px !important;
         background-size: contain !important;
     }
-    .content-Box{
-        margin-top: -70px;
-}
-}
 
+    .thankyou-main {
+        min-height: 350px;
+    }
+    .contactusBox .box1, .contactusBox .box2{
+        width: 100%;
+    }
+}
 @media (min-width:768px) and (max-width:1240px) {
   
     .thankyouSection{
@@ -727,6 +748,12 @@ section {
     }
 
 }
+.contactusBox .small-icon i{
+    color: black !important;
+}
+
+
+
 
 
 

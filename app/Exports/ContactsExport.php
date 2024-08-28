@@ -20,15 +20,10 @@ class ContactsExport implements FromCollection , WithHeadings , WithMapping
     public function headings(): array
     {
         return [
-            'ID',
             'Name',
             'Email',
             'Phone',
-            'City',
-            'UTM Source',
-            'UTM Type',
-            'UTM Campaign',
-            'UTM Content',
+            'Speciality',
             'Created At',
         ];
     }
@@ -36,15 +31,10 @@ class ContactsExport implements FromCollection , WithHeadings , WithMapping
     public function map($contact): array
     {
         return [
-            $contact->id,
             $contact->name,
             $contact->email,
             $contact->phone,
-            $contact->city,
-            $contact->utm_source,
-            $contact->utm_medium,
-            $contact->utm_campaign,
-            $contact->utm_content,
+            $contact->specialty,
             $contact->created_at,
         ];
     }

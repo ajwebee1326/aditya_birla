@@ -56,7 +56,7 @@
                                 @if($contact->file)
                                 <a href="{{ asset('storage/' . $contact->file) }}" class="btn btn-primary btn-sm"><i class="bx bx-download"></i></a>
                                 @endif
-                                <a href="{{ route('contacts.delete', $contact->id) }}" class="btn btn-danger btn-sm"><i class="bx bx-trash"></i></a>
+                                <a href="{{ route('contacts.delete', $contact->id) }}" class="btn btn-danger btn-sm" onclick="return confirmDelete()"><i class="bx bx-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach
@@ -85,6 +85,13 @@
 
 @push('scripts')
     {{-- <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> --}}
+
+    <script>
+        function confirmDelete() {
+            return confirm('Are you sure you want to delete this contact?');
+        }
+    </script>
+    
     <script>
         $(document).ready( function () {
             $('#datatable').DataTable();
