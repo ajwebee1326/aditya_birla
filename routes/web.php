@@ -29,6 +29,8 @@ Route::post('/check-phone',[ContactController::class,'checkPhone'])->name('check
 Route::post('change-lead-type',[ContactController::class,'changeLeadType'])->name('contacts.change-type');
 Route::get('/thank-you',[ContactController::class,'thankyou'])->name('thank-you');
 
+Route::post('/update-minutes',[ContactController::class,'saveL1Minutes'])->name('contacts.update-minutes');
+
 
  
 

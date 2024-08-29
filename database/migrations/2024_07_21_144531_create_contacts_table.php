@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('phone');
             $table->string('specialty')->nullable();
             $table->text('file')->nullable();
             $table->longText('message')->nullable();
+            $table->longText('l1_minutes')->nullable();
             $table->string('lead_type')->nullable();
             $table->timestamps();
         });

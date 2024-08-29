@@ -15,7 +15,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::orderBy('created_at', 'desc')->get();
+        $contacts = Contact::orderBy('created_at', 'desc')->get();     
         return view('admin.contact.index', compact('contacts')); 
     }
 
@@ -37,7 +37,7 @@ class ContactController extends Controller
         if($specialty == 'other'){
             $rules = [
                 'name' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
-                'email' => 'required|email|unique:contacts',
+                'email' => 'nullable|email|unique:contacts',
                 'phone' => 'required|digits_between:10,13|unique:contacts',
                 'specialty' => 'required',
                 'message' => 'required',
@@ -45,7 +45,7 @@ class ContactController extends Controller
         }else{
             $rules = [
                 'name' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
-                'email' => 'required|email|unique:contacts',
+                'email' => 'nullable|email|unique:contacts',
                 'phone' => 'required|digits_between:10,13|unique:contacts',
                 'specialty' => 'required',
             ];
@@ -54,7 +54,7 @@ class ContactController extends Controller
         $messages = [
             'name.required' => 'Please enter your name.',
             'name.regex' => 'Name must contain only alphabets and spaces.',
-            'email.required' => 'Please enter your email address.',
+            // 'email.required' => 'Please enter your email address.',
             'email.email' => 'The email address must be a valid email format.',
             'phone.required' => 'Please enter your phone number.',
             'phone.digits_between' => 'Phone number must be between 10 and 13 digits.',
@@ -161,6 +161,21 @@ class ContactController extends Controller
         $contact->save();
         return response()->json(['status' => 'success', 'message' => 'Lead type updated successfully.']);   
         
+    }
+
+   
+
+    public function saveL1Minutes(Request $request){
+        $contact = $request->inquiryId;
+        $contact = Contact::find($contact);
+        $contact->L1_minutes = $request->l1_minutes;
+        try {
+            $contact->save();
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage()]);
+        }
+        return response()->json(['success' => 'true']);
+
     }
 
 }

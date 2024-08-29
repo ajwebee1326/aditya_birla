@@ -3,7 +3,7 @@
 @section('title', 'Contact')
 
 @section('styles')
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"> --}}
 @endsection
 
 @section('content')
@@ -41,6 +41,7 @@
                             <td>{{ $contact->phone }}</td>
                             <td>{{ $contact->specialty }}</td>
                             <td>{{ $contact->created_at }}</td>
+
                             <td>
                                 @php
                                     $types = ['Relevant', 'Irrelevant', 'Pending', 'Spam','Done'];
@@ -58,6 +59,7 @@
                                 <a href="{{ asset('storage/' . $contact->file) }}" class="btn btn-primary btn-sm"><i class="bx bx-download"></i></a>
                                 @endif
                                 <a href="{{ route('contacts.delete', $contact->id) }}" class="btn btn-danger btn-sm" onclick="return confirmDelete()"><i class="bx bx-trash"></i></a>
+                                <button type="button" class="btn btn-info btn-sm add-message" data-bs-toggle="modal" data-bs-target="#L1Minutes" data-id="{{ $contact->id }}" data-minutes="{{ $contact->l1_minutes }}"><i class='bx bxs-message-rounded-add'></i></button>
                             </td>
                         </tr>
                         @endforeach
@@ -80,7 +82,35 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
+
+
+  {{-- Add Message Modal  --}}
+
+<div class="modal fade" id="L1Minutes" tabindex="-1" aria-modal="true" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel2">Call Discussion </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="POST" id="l1_minutes_form">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col mb-3">
+                            <textarea id="l1_minutes" name="l1_minutes" class="form-control" placeholder="Type Here..."></textarea>
+                        </div>
+                        <input type="hidden" id="inquiry_id" name="inquiry_id">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Minutes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 @endsection
 
@@ -97,6 +127,7 @@
         $(document).ready( function () {
             $('#datatable').DataTable();
         });
+        
 
         $(document).on('click', '.view-message', function() {
             var message = $(this).data('message');
@@ -123,5 +154,39 @@
                 }
             });
         });
+
+
+        //Thi  si the modal to add the message and setting the value 
+        $(document).on('click', '.add-message', function() {
+            var contactId = $(this).data('id'); 
+            var minutes = $(this).data('minutes');
+            $('#inquiry_id').val(contactId);
+            $('#l1_minutes').val(minutes);
+            
+        });
+
+        //Here we are submitting the discussion form details
+        $("#l1_minutes_form").submit(function(e) {
+            e.preventDefault();
+            let l1_minutes = $("#l1_minutes").val();
+            let inquiryId = $("#inquiry_id").val();
+            $.post("{{ route('contacts.update-minutes') }}", {
+                l1_minutes: l1_minutes,
+                inquiryId: inquiryId,
+                "_token": "{{ csrf_token() }}",
+            }, function(data) {
+                if (data.success) {
+                    console.log(data);
+                    $("#L1Minutes").modal('hide');
+                    location.reload();
+                } else {
+                     alert('Something went wrong');
+                }
+            });
+        });
+
+
+
+
     </script>
 @endpush

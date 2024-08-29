@@ -131,7 +131,7 @@
                                                 <div class="col-sm-6">
                                                     <div class="form_icons">
                                                         <input class="xs-mb-10px mb-15px form-control required @error('email') is-invalid @enderror" type="email"
-                                                            name="email" placeholder="Email*" required value="{{ old('email') }}" />
+                                                            name="email" placeholder="Email" value="{{ old('email') }}" />
                                                         <i class="fa-regular fa-envelope"></i>
                                                     </div>
                                                     @error('email')
@@ -219,7 +219,7 @@
 
                                                 <div class="form_icons">
                                                     <textarea class="form-control mb-15px" cols="20" rows="2"
-                                                        name="message" placeholder="Your message">{{ old('message') }}</textarea>4
+                                                        name="message" placeholder="Your message">{{ old('message') }}</textarea>
                                                     @error('message')
                                                     <small class="text-danger">{{ $message }}</small>
                                                     @enderror

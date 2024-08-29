@@ -13,8 +13,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::all();
-        return view('admin.contact.index', compact('contacts')); 
+        // $contacts = Contact::all();
+        // return view('admin.contact.index', compact('contacts')); 
     }
 
     /**

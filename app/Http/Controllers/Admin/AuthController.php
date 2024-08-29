@@ -78,7 +78,8 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             
-            return redirect()->route('admin.dashboard');
+            // return redirect()->route('admin.dashboard');
+            return redirect()->route('admin.contact');
         }
          
         return redirect()->route('admin.login');
