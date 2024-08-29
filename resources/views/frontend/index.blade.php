@@ -40,7 +40,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto align-items-center">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{route('viewIndex')}}">Home</a>
                         </li>
@@ -57,7 +57,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#Reviews">Reviews</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
+
+                            <div class="mt-3 text-center" data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 100, "staggervalue": 150, "easing": "easeOutQuad" }'><a  href="tel:8630925837" class="btn btn-medium btn-base-color btn-round-edge left-icon btn-box-shadow text-white call-us-header">Book Now</a></div>
                             <a class="fs-18 text-dark fw-500 d-flex justify-content-lg-center justify-content-start align-items-center gap-2"
                                 href="tel:8630925837">
                                 <span
@@ -66,7 +68,13 @@
                                 </span>
                                 +91 98811 23006
                             </a>
-                        </li>
+                        </li> --}}
+
+                        <div class="call-us-header">
+
+                            <a class="btn btn-medium btn-base-color btn-round-edge left-icon btn-box-shadow" href="tel:020 6666 9188">Call Us Now</a>
+
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -274,7 +282,7 @@
                             <div class="swiper-slide"><img src="{{asset('frontend')}}/images/AB_building-img.jpg" alt="" class="rounded w-100"></div>
                             <div class="swiper-slide"><img src="{{asset('frontend')}}/images/ab_about_img2.jpg" alt="" class="rounded w-100"></div>
                             <div class="swiper-slide"><img src="{{asset('frontend')}}/images/ab_about_img3.jpg" alt="" class="rounded w-100"></div>
-                            <div class="swiper-slide"><img src="{{asset('frontend')}}/images/roboat_img.jpg" alt="" class="rounded w-100"></div>
+                            <div class="swiper-slide"><img src="{{asset('frontend')}}/images/roboat_img.jpeg" alt="" class="rounded w-100"></div>
                         </div>
                         <!-- start slider navigation -->
                         <div class="d-flex gap-2 justify-content-center position-absolute w-100 z-index-1 bottom-0px">
