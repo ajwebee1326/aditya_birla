@@ -3,7 +3,7 @@
 @section('title', 'Contact')
 
 @section('styles')
-    {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"> --}}
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 @endsection
 
 @section('content')
@@ -115,7 +115,7 @@
 @endsection
 
 @push('scripts')
-    {{-- <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> --}}
+    <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 
     <script>
         function confirmDelete() {
@@ -125,7 +125,10 @@
     
     <script>
         $(document).ready( function () {
-            $('#datatable').DataTable();
+            // $('#datatable').DataTable();
+            $('#datatable').DataTable({
+                "order": [[4, 'desc']]  // Adjust the index to match the column you want to sort by
+            });
         });
         
 
