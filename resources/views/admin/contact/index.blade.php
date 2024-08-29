@@ -40,8 +40,8 @@
                             <td>{{ $contact->email }}</td>
                             <td>{{ $contact->phone }}</td>
                             <td>{{ $contact->specialty }}</td>
-                            {{-- <td>{{ $contact->created_at }}</td> --}}
-                            <td>{{ date('d M Y H:i:s', strtotime($contact->created_at)) }}</td>
+                            <td>{{ $contact->created_at }}</td>
+                           
                             <td>
                                 @php
                                     $types = ['Relevant', 'Irrelevant', 'Pending', 'Spam','Done'];
