@@ -34,11 +34,48 @@ class ContactController extends Controller
     {
 
         $specialty = $request->specialty;
+        $phone_code = $request->phone_code;
+
+        // if($specialty == 'other'){
+        //     $rules = [
+        //         'name' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
+        //         'email' => 'nullable|email|unique:contacts',
+        //         'phone' => 'required|digits_between:10,13|unique:contacts',
+        //         'specialty' => 'required',
+        //         'message' => 'required',
+        //     ];
+        // }else{
+        //     $rules = [
+        //         'name' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
+        //         'email' => 'nullable|email|unique:contacts',
+        //         'phone' => 'required|digits_between:10,13|unique:contacts',
+        //         'specialty' => 'required',
+        //     ];
+        // }
+
+        // $messages = [
+        //     'name.required' => 'Please enter your name.',
+        //     'name.regex' => 'Name must contain only alphabets and spaces.',
+        //     'email.email' => 'The email address must be a valid email format.',
+        //     'phone.required' => 'Please enter your phone number.',
+        //     'phone.digits_between' => 'Phone number must be between 10 and 13 digits.',
+        //     'email.unique' => 'Email is already registered.',
+        //     'phone.unique' => 'Number is already registered.',
+        //     'message.required' => 'Please enter your message.',
+        // ];
+
+        
+        if ($phone_code == '91') {
+            $phoneRule = 'required|digits:10|unique:contacts';
+        } else {
+            $phoneRule = 'required|digits:8|unique:contacts';
+        }
+
         if($specialty == 'other'){
             $rules = [
                 'name' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
                 'email' => 'nullable|email|unique:contacts',
-                'phone' => 'required|digits_between:10,13|unique:contacts',
+                'phone' => $phoneRule,
                 'specialty' => 'required',
                 'message' => 'required',
             ];
@@ -46,7 +83,7 @@ class ContactController extends Controller
             $rules = [
                 'name' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
                 'email' => 'nullable|email|unique:contacts',
-                'phone' => 'required|digits_between:10,13|unique:contacts',
+                'phone' => $phoneRule,
                 'specialty' => 'required',
             ];
         }
@@ -54,10 +91,9 @@ class ContactController extends Controller
         $messages = [
             'name.required' => 'Please enter your name.',
             'name.regex' => 'Name must contain only alphabets and spaces.',
-            // 'email.required' => 'Please enter your email address.',
             'email.email' => 'The email address must be a valid email format.',
             'phone.required' => 'Please enter your phone number.',
-            'phone.digits_between' => 'Phone number must be between 10 and 13 digits.',
+            'phone.digits' => 'Phone number must have :digits digits.',
             'email.unique' => 'Email is already registered.',
             'phone.unique' => 'Number is already registered.',
             'message.required' => 'Please enter your message.',

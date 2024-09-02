@@ -124,9 +124,9 @@
                                                     @error('name')
                                                     <small class="text-danger">{{ $message }}</small>
                                                     @enderror
-
                                                 </div>
-                                                <div class="col-6">
+
+                                                {{-- <div class="col-6">
                                                     <div class="form_icons">
                                                         <input class="xs-mb-10px mb-15px form-control required @error('phone') is-invalid @enderror" type="number"
                                                             name="phone" placeholder="Number*" required value="{{ old('phone') }}" />
@@ -135,7 +135,57 @@
                                                     @error('phone')
                                                     <small class="text-danger">{{ $message }}</small>
                                                     @enderror
+                                                </div> --}}
+
+                                                {{-- <div class="col-6">
+                                                    <!-- Row for Country/Area Code Dropdown -->
+                                                    <div class="form_icons mb-2">
+                                                        <select class="form-select" name="phone_code">
+                                                            <option value="91" selected>91</option>
+                                                            <option value="020">020</option>
+                                                        </select>
+                                                    </div>
+                                                
+                                                    <!-- Row for Phone Number Input -->
+                                                    <div class="form_icons position-relative">
+                                                        <input class="form-control required @error('phone') is-invalid @enderror" 
+                                                               type="number" name="phone" placeholder="Number*" required 
+                                                               value="{{ old('phone') }}" />
+                                                        <i class="fa-solid fa-phone position-absolute end-0 top-50 translate-middle-y pe-3"></i>
+                                                    </div>
+                                                    @error('phone')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
                                                 </div>
+                                                 --}}
+
+                                                 
+                                                <div class="col-6">
+                                                    <!-- Row for Country/Area Code Dropdown -->
+                                                    <div class="form_icons mb-2">
+                                                        <select class="form-select" name="phone_code">
+                                                            <option value="91" selected>91</option>
+                                                            <option value="020">020</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-6">
+                                                    <!-- Row for Phone Number Input -->
+                                                    <div class="form_icons position-relative">
+                                                        <input class="form-control required @error('phone') is-invalid @enderror" 
+                                                            type="number" name="phone" placeholder="Number*" required 
+                                                            value="{{ old('phone') }}" />
+                                                        <!-- Position icon correctly using z-index -->
+                                                        <i class="fa-solid fa-phone position-absolute end-0 top-50 translate-middle-y pe-3" style="pointer-events: none; z-index: 1;"></i>
+                                                    </div>
+                                                    @error('phone')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                               
+                                                
+
                                                 <div class="col-sm-6">
                                                     <div class="form_icons">
                                                         <input class="xs-mb-10px mb-15px form-control required @error('email') is-invalid @enderror" type="email"
